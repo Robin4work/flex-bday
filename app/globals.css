@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
@@ -8,6 +10,9 @@ body {
 }
 
 
+.font-cursive {
+  font-family: 'Great Vibes', cursive;
+}
 /* Optional custom vars */
 :root {
   --background: #ffffff;
@@ -18,4 +23,13 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Pacifico', cursive;
+}
+@keyframes flicker {
+  0% { transform: scale(1) translateY(0); opacity: 0.9; }
+  50% { transform: scale(1.1) translateY(-1px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 0.8; }
+}
+
+.animate-flicker {
+  animation: flicker 0.8s infinite ease-in-out;
 }

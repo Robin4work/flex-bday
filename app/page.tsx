@@ -14,7 +14,7 @@ export default function Home() {
       <button
         className="mt-8 px-6 py-3 bg-pink-600 text-white rounded-full shadow-md hover:bg-pink-700 transition"
         onClick={() => {
-          window.location.href = "/robin-bday";
+          window.location.href = "/bday";
         }}
       >
         See The Surprise 🎁
