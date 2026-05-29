@@ -6,6 +6,7 @@ import IntroSection from "@/components/IntroSection";
 import Candle from "@/components/Candle";
 import SmoothScroll from "@/components/SmoothScroll";
 import AmbientParticles from "@/components/AmbientParticles";
+import LoveNotes from "@/components/LoveNotes";
 
 export default function BirthdayPage() {
   useEffect(() => {
@@ -25,7 +26,8 @@ export default function BirthdayPage() {
       <AmbientParticles />
       <SmoothScroll />
       <IntroSection />
-      <Candle />
+      <LoveNotes />
+      {/* <Candle /> */}
     </main>
   );
 }

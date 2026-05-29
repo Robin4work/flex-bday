@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 
@@ -54,27 +53,23 @@ export default function IntroSection() {
     };
   }, []);
 
-  const scrollBySlide = (direction: "left" | "right") => {
-    if (sliderRef.current) {
-      const amount = window.innerWidth;
-
-      sliderRef.current.scrollBy({
-        left: direction === "left" ? -amount : amount,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const moveButton = () => {
-    const maxX = window.innerWidth / 2 - 200;
-    const maxY = window.innerHeight / 2 - 120;
+    const buttonWidth = 170;
+    const buttonHeight = 70;
 
-    const x = Math.random() * maxX * 2 - maxX;
-    const y = Math.random() * maxY * 2 - maxY;
+    const padding = 80;
 
-    setPosition({ x, y });
+    const maxX = window.innerWidth - buttonWidth - padding;
+    const maxY = window.innerHeight - buttonHeight - padding;
+
+    const randomX = Math.random() * maxX - window.innerWidth / 2;
+    const randomY = Math.random() * maxY - window.innerHeight / 2;
+
+    setPosition({
+      x: randomX,
+      y: randomY,
+    });
   };
-
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-[#050505] text-white">
       {/* Background Glow */}
@@ -140,26 +135,6 @@ export default function IntroSection() {
           </p>
         </div>
       </div>
-
-      {/* Left Arrow */}
-      <button
-        onClick={() => scrollBySlide("left")}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-50 
-        bg-white/10 backdrop-blur-md border border-white/10
-        p-3 rounded-full hover:scale-110 transition duration-300"
-      >
-        <ChevronLeft size={28} />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={() => scrollBySlide("right")}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-50 
-        bg-white/10 backdrop-blur-md border border-white/10
-        p-3 rounded-full hover:scale-110 transition duration-300"
-      >
-        <ChevronRight size={28} />
-      </button>
 
       {/* Slider */}
       <div
@@ -290,7 +265,7 @@ export default function IntroSection() {
 
             <p className="text-gray-400 mt-6 text-lg">Choose wisely 😌</p>
 
-            <div className="relative mt-16 flex items-center justify-center gap-8 h-[120px]">
+            <div className="relative mt-16 flex items-center justify-center gap-8 h-[220px] overflow-hidden">
               {/* YES */}
               {!accepted ? (
                 <motion.button
@@ -332,7 +307,7 @@ export default function IntroSection() {
                   </p>
 
                   <p className="mt-3 text-sm tracking-[4px] uppercase text-gray-500">
-                    Continue the journey →
+                    Continue the journey.
                   </p>
                 </motion.div>
               )}
@@ -343,22 +318,30 @@ export default function IntroSection() {
                   x: position.x,
                   y: position.y,
                 }}
+                initial={{
+                  x: 0,
+                  y: 0,
+                }}
                 transition={{
                   type: "spring",
-                  stiffness: 500,
-                  damping: 15,
+                  stiffness: 450,
+                  damping: 16,
                 }}
                 onMouseEnter={moveButton}
                 className="
-                  absolute
-                  px-10 py-4
-                  rounded-full
-                  border border-white/20
-                  bg-white/10
-                  backdrop-blur-md
-                  text-white
-                  text-xl
-                "
+    fixed
+    top-[55%]
+    left-[55%]
+    px-10 py-4
+    rounded-full
+    border border-white/20
+    bg-white/10
+    backdrop-blur-md
+    text-white
+    text-xl
+    whitespace-nowrap
+    z-50
+  "
               >
                 No 🙈
               </motion.button>
