@@ -1,11 +1,18 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import confetti from "canvas-confetti";
 
 export default function IntroSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
 
+  const [position, setPosition] = useState({
+    x: 0,
+    y: 0,
+  });
+  const [accepted, setAccepted] = useState(false);
   useEffect(() => {
     const slider = sliderRef.current;
 
@@ -33,51 +40,105 @@ export default function IntroSection() {
 
       const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-      targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+      if (targetScroll < 0) targetScroll = 0;
+      if (targetScroll > maxScroll) targetScroll = maxScroll;
     };
 
-    slider.addEventListener("wheel", handleWheel, {
+    window.addEventListener("wheel", handleWheel, {
       passive: false,
     });
 
     return () => {
-      slider.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("wheel", handleWheel);
       cancelAnimationFrame(animationFrame);
     };
   }, []);
 
   const scrollBySlide = (direction: "left" | "right") => {
-    if (!sliderRef.current) return;
+    if (sliderRef.current) {
+      const amount = window.innerWidth;
 
-    const scrollAmount = window.innerWidth * 0.9;
+      sliderRef.current.scrollBy({
+        left: direction === "left" ? -amount : amount,
+        behavior: "smooth",
+      });
+    }
+  };
 
-    sliderRef.current.scrollTo({
-      left:
-        sliderRef.current.scrollLeft +
-        (direction === "left" ? -scrollAmount : scrollAmount),
-      behavior: "smooth",
-    });
+  const moveButton = () => {
+    const maxX = window.innerWidth / 2 - 200;
+    const maxY = window.innerHeight / 2 - 120;
+
+    const x = Math.random() * maxX * 2 - maxX;
+    const y = Math.random() * maxY * 2 - maxY;
+
+    setPosition({ x, y });
   };
 
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-[#050505] text-white">
-      {/* Ambient Glow */}
+      {/* Background Glow */}
       <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-yellow-500/10 blur-[140px] rounded-full" />
 
       <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-rose-500/10 blur-[140px] rounded-full" />
 
       {/* Header */}
-      <div className="fixed top-6 left-6 z-50">
-        <h1 className="text-5xl md:text-6xl tracking-wide font-cursive drop-shadow-lg">
-          <span className="text-yellow-400">H</span>
-          <span className="text-white">appy</span>{" "}
-          <span className="text-yellow-400">B</span>
-          <span className="text-white">irthday</span>
-        </h1>
+      <div className="fixed top-6 left-6 z-50 flex items-center gap-4">
+        {/* Tiny Candle */}
+        {/* Elegant Flame */}
+        {/* Elegant Candle */}
+        <div className="relative flex flex-col items-center justify-center mt-2">
+          {/* Glow */}
+          <div className="absolute -top-2 w-10 h-10 bg-yellow-400/20 blur-2xl rounded-full" />
 
-        <p className="text-sm text-gray-400 mt-2 tracking-[4px] uppercase">
-          A Special Story
-        </p>
+          {/* Flame */}
+          <div
+            className="
+      w-3 h-5
+      bg-gradient-to-t from-yellow-500 via-yellow-300 to-white
+      rounded-full
+      animate-pulse
+      rotate-[-8deg]
+      shadow-[0_0_25px_rgba(255,215,0,0.7)]
+      z-10
+    "
+          />
+
+          {/* Wick */}
+          <div className="w-[2px] h-2 bg-black/70 rounded-full -mt-1 z-0" />
+
+          {/* Candle Body */}
+          <div
+            className="
+      w-5 h-10
+      rounded-md
+      bg-gradient-to-b
+      from-[#fff3c4]
+      via-[#f4d87a]
+      to-[#d6a93d]
+      shadow-lg
+      border border-yellow-200/30
+      relative
+      overflow-hidden
+    "
+          >
+            {/* Candle Shine */}
+            <div className="absolute left-1 top-1 w-[2px] h-6 bg-white/40 rounded-full" />
+          </div>
+        </div>
+
+        <div>
+          <h1 className="text-5xl md:text-6xl tracking-wide font-cursive drop-shadow-lg">
+            <span className="text-yellow-400">H</span>
+            <span className="text-white">appy</span>{" "}
+            <span className="text-yellow-400">B</span>
+            <span className="text-white">irthday</span>
+          </h1>
+
+          <p className="text-sm text-gray-400 mt-2 tracking-[4px] uppercase">
+            A Little Journey Of Us ✨
+          </p>
+        </div>
       </div>
 
       {/* Left Arrow */}
@@ -103,15 +164,18 @@ export default function IntroSection() {
       {/* Slider */}
       <div
         ref={sliderRef}
-        className="absolute inset-0 flex overflow-x-scroll snap-x snap-mandatory no-scrollbar"
+        className="absolute inset-0 flex overflow-x-scroll no-scrollbar"
       >
         {/* Slide 1 */}
         <section className="min-w-full h-full flex items-center justify-center px-20">
           <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
-            {/* Left Content */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
               <p className="uppercase tracking-[6px] text-yellow-400 text-sm mb-4">
-                Memory One
+                The Beginning
               </p>
 
               <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
@@ -124,10 +188,14 @@ export default function IntroSection() {
                 Some people enter life quietly... and somehow become the loudest
                 happiness.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Right Image */}
-            <div className="relative group">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2 }}
+              className="relative group"
+            >
               <div className="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-[40px]" />
 
               <img
@@ -137,7 +205,7 @@ export default function IntroSection() {
                 shadow-2xl border border-white/10
                 group-hover:scale-[1.02] transition duration-700"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -146,7 +214,7 @@ export default function IntroSection() {
           <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
             <div>
               <p className="uppercase tracking-[6px] text-rose-400 text-sm mb-4">
-                Memory Two
+                Memories
               </p>
 
               <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
@@ -179,11 +247,11 @@ export default function IntroSection() {
           <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
             <div>
               <p className="uppercase tracking-[6px] text-yellow-400 text-sm mb-4">
-                Memory Three
+                Feelings
               </p>
 
               <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
-                And Somehow <br />
+                Somehow <br />
                 You Became <br />
                 Home
               </h2>
@@ -203,6 +271,97 @@ export default function IntroSection() {
                 shadow-2xl border border-white/10
                 group-hover:scale-[1.02] transition duration-700"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Slide 4 - Impossible Choice */}
+        <section className="min-w-full h-full flex items-center justify-center relative px-10">
+          <div className="text-center relative z-10">
+            <p className="uppercase tracking-[8px] text-yellow-400 text-sm mb-6">
+              One Important Question 👀
+            </p>
+
+            <h2 className="text-5xl md:text-7xl leading-tight text-white font-cursive">
+              Will You Always <br />
+              Be My Favorite <br />
+              Human? 🙄
+            </h2>
+
+            <p className="text-gray-400 mt-6 text-lg">Choose wisely 😌</p>
+
+            <div className="relative mt-16 flex items-center justify-center gap-8 h-[120px]">
+              {/* YES */}
+              {!accepted ? (
+                <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setAccepted(true);
+
+                    confetti({
+                      particleCount: 250,
+                      spread: 140,
+                      origin: { y: 0.6 },
+                    });
+                  }}
+                  className="
+      px-10 py-4
+      rounded-full
+      bg-yellow-400
+      text-black
+      text-xl
+      font-semibold
+      shadow-[0_0_40px_rgba(255,215,0,0.5)]
+    "
+                >
+                  Yes 💛
+                </motion.button>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center"
+                >
+                  <h3 className="text-5xl font-cursive text-yellow-400">
+                    Good. Correct Answer 😌💛
+                  </h3>
+
+                  <p className="mt-6 text-gray-300 text-lg">
+                    Relationship status successfully secured ✨
+                  </p>
+
+                  <p className="mt-3 text-sm tracking-[4px] uppercase text-gray-500">
+                    Continue the journey →
+                  </p>
+                </motion.div>
+              )}
+
+              {/* NO */}
+              <motion.button
+                animate={{
+                  x: position.x,
+                  y: position.y,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 15,
+                }}
+                onMouseEnter={moveButton}
+                className="
+                  absolute
+                  px-10 py-4
+                  rounded-full
+                  border border-white/20
+                  bg-white/10
+                  backdrop-blur-md
+                  text-white
+                  text-xl
+                "
+              >
+                No 🙈
+              </motion.button>
             </div>
           </div>
         </section>
