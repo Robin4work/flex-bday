@@ -12,8 +12,8 @@ const DobCountdownSection = () => {
     nextBirthday.setFullYear(today.getFullYear() + 1);
   }
 
-  const timeDiff = nextBirthday.getTime() - today.getTime();
-  const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+  const timeDiff = nextBirthday.getTime() - today.getTime(); 
+  const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); 
 
   const [showText, setShowText] = useState(false);
 

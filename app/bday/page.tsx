@@ -1,10 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import confetti from 'canvas-confetti';
-import IntroSection from '@/components/IntroSection';
-import DobCountdownSection from '@/components/DobCountdownSection';
-import Candle from '@/components/Candle';
+import { useEffect } from "react";
+import confetti from "canvas-confetti";
+import IntroSection from "@/components/IntroSection";
+import DobCountdownSection from "@/components/DobCountdownSection";
+import Candle from "@/components/Candle";
+import SmoothScroll from "@/components/SmoothScroll";
+import LoveNotes from "@/components/LoveNotes";
+import AmbientParticles from "@/components/AmbientParticles";
 
 export default function BirthdayPage() {
   useEffect(() => {
@@ -21,8 +24,10 @@ export default function BirthdayPage() {
 
   return (
     <main>
+      <AmbientParticles />
+      <SmoothScroll />
       <IntroSection />
-      {/* <DobCountdownSection /> */}
+      <LoveNotes />
       <Candle />
     </main>
   );
