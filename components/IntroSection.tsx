@@ -12,6 +12,7 @@ export default function IntroSection() {
     y: 0,
   });
   const [accepted, setAccepted] = useState(false);
+  const [showNoButton, setShowNoButton] = useState(false);
   useEffect(() => {
     const slider = sliderRef.current;
 
@@ -41,8 +42,22 @@ export default function IntroSection() {
 
       if (targetScroll < 0) targetScroll = 0;
       if (targetScroll > maxScroll) targetScroll = maxScroll;
-    };
 
+      // Detect current slide
+      const currentSlide = Math.round(targetScroll / window.innerWidth);
+
+      // Slide indexes:
+      // 0 = Slide 1
+      // 1 = Slide 2
+      // 2 = Slide 3
+      // 3 = Slide 4
+
+      if (currentSlide >= 3) {
+        setShowNoButton(true);
+      } else {
+        setShowNoButton(false);
+      }
+    };
     window.addEventListener("wheel", handleWheel, {
       passive: false,
     });
@@ -342,6 +357,7 @@ export default function IntroSection() {
     whitespace-nowrap
     z-50
   "
+                hidden={!showNoButton || accepted}
               >
                 No 🙈
               </motion.button>
