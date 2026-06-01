@@ -4,7 +4,11 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 
-export default function IntroSection() {
+type IntroSectionProps = {
+  onOpenLetter: () => void;
+};
+
+export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const [position, setPosition] = useState({
@@ -86,17 +90,26 @@ export default function IntroSection() {
     });
   };
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#050505] text-white">
+    <div
+      className="
+    relative
+    w-screen
+    h-screen
+    overflow-hidden
+    bg-[#050505]
+    text-white
+    scale-[0.78]
+    md:scale-100
+    origin-top-left
+  "
+    >
       {/* Background Glow */}
       <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-yellow-500/10 blur-[140px] rounded-full" />
 
       <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-rose-500/10 blur-[140px] rounded-full" />
 
       {/* Header */}
-      <div className="fixed top-6 left-6 z-50 flex items-center gap-4">
-        {/* Tiny Candle */}
-        {/* Elegant Flame */}
-        {/* Elegant Candle */}
+      <div className="fixed top-4 left-4 md:top-6 md:left-6 z-50 flex items-center gap-2 md:gap-4">
         <div className="relative flex flex-col items-center justify-center mt-2">
           {/* Glow */}
           <div className="absolute -top-2 w-10 h-10 bg-yellow-400/20 blur-2xl rounded-full" />
@@ -138,14 +151,14 @@ export default function IntroSection() {
         </div>
 
         <div>
-          <h1 className="text-5xl md:text-6xl tracking-wide font-cursive drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl md:text-6xl tracking-wide font-cursive drop-shadow-lg">
             <span className="text-yellow-400">H</span>
             <span className="text-white">appy</span>{" "}
             <span className="text-yellow-400">B</span>
             <span className="text-white">irthday</span>
           </h1>
 
-          <p className="text-sm text-gray-400 mt-2 tracking-[4px] uppercase">
+          <p className="text-[10px] sm:text-xs md:text-sm text-gray-400 mt-1 md:mt-2 tracking-[2px] md:tracking-[4px] uppercase">
             A Little Journey Of Us ✨
           </p>
         </div>
@@ -157,8 +170,8 @@ export default function IntroSection() {
         className="absolute inset-0 flex overflow-x-scroll no-scrollbar"
       >
         {/* Slide 1 */}
-        <section className="min-w-full h-full flex items-center justify-center px-20">
-          <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
+        <section className="min-w-full h-full flex items-center justify-center px-6 md:px-20">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -168,7 +181,7 @@ export default function IntroSection() {
                 The Beginning
               </p>
 
-              <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight font-light mb-8">
                 The Day <br />
                 Everything <br />
                 Felt Different
@@ -191,7 +204,7 @@ export default function IntroSection() {
               <img
                 src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200"
                 alt="Memory"
-                className="relative rounded-[40px] w-full h-[550px] object-cover 
+                className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
                 group-hover:scale-[1.02] transition duration-700"
               />
@@ -200,14 +213,14 @@ export default function IntroSection() {
         </section>
 
         {/* Slide 2 */}
-        <section className="min-w-full h-full flex items-center justify-center px-20">
-          <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
+        <section className="min-w-full h-full flex items-center justify-center px-6 md:px-20">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full max-w-7xl">
             <div>
               <p className="uppercase tracking-[6px] text-rose-400 text-sm mb-4">
                 Memories
               </p>
 
-              <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight font-light mb-8">
                 Laughs <br />
                 That Stayed <br />
                 Forever
@@ -224,7 +237,7 @@ export default function IntroSection() {
               <img
                 src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200"
                 alt="Memory"
-                className="relative rounded-[40px] w-full h-[550px] object-cover 
+                className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
                 group-hover:scale-[1.02] transition duration-700"
               />
@@ -233,14 +246,14 @@ export default function IntroSection() {
         </section>
 
         {/* Slide 3 */}
-        <section className="min-w-full h-full flex items-center justify-center px-20">
-          <div className="grid md:grid-cols-2 gap-16 items-center w-full max-w-7xl">
+        <section className="min-w-full h-full flex items-center justify-center px-6 md:px-20">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full max-w-7xl">
             <div>
               <p className="uppercase tracking-[6px] text-yellow-400 text-sm mb-4">
                 Feelings
               </p>
 
-              <h2 className="text-5xl md:text-7xl leading-tight font-light mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight font-light mb-8">
                 Somehow <br />
                 You Became <br />
                 Home
@@ -257,7 +270,7 @@ export default function IntroSection() {
               <img
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
                 alt="Memory"
-                className="relative rounded-[40px] w-full h-[550px] object-cover 
+                className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
                 group-hover:scale-[1.02] transition duration-700"
               />
@@ -272,7 +285,7 @@ export default function IntroSection() {
               One Important Question 👀
             </p>
 
-            <h2 className="text-5xl md:text-7xl leading-tight text-white font-cursive">
+            <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight text-white font-cursive">
               Will You Always <br />
               Be My Favorite <br />
               Human? 🙄
@@ -294,6 +307,10 @@ export default function IntroSection() {
                       spread: 140,
                       origin: { y: 0.6 },
                     });
+
+                    setTimeout(() => {
+                      onOpenLetter();
+                    }, 1200);
                   }}
                   className="
       px-10 py-4
@@ -322,7 +339,7 @@ export default function IntroSection() {
                   </p>
 
                   <p className="mt-3 text-sm tracking-[4px] uppercase text-gray-500">
-                    Continue the journey.
+                    Opening something special...
                   </p>
                 </motion.div>
               )}
@@ -345,7 +362,7 @@ export default function IntroSection() {
                 onMouseEnter={moveButton}
                 className="
     fixed
-    top-[55%]
+    top-[55%],
     left-[55%]
     px-10 py-4
     rounded-full
