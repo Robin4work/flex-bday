@@ -7,8 +7,9 @@ import { X } from "lucide-react";
 const notes = [
   {
     id: 1,
-    title: "For You ❤️",
-    message: "Somehow you made ordinary days feel magical.",
+    title: "For You Meri Jaan ❤️",
+    message:
+      "Somehow you made ordinary days feel magical that never felt before you",
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const notes = [
   {
     id: 3,
     title: "Forever Mood 🌙",
-    message: "Not every home is a place. Sometimes it’s just one person.",
+    message:
+      "Not every home is a place. Sometimes it’s just one person & that you always you",
   },
 ];
 
@@ -136,7 +138,7 @@ export default function LoveNotes() {
                 </p>
 
                 <p className="text-right pt-8 text-yellow-800 font-cursive text-2xl">
-                  — Yours
+                  — Always Yours
                 </p>
               </div>
             </motion.div>

@@ -14,11 +14,9 @@ export default function LoveLetter({ onContinue }: LoveLetterProps) {
   const letterText = `
 Thank you for being the calm in my chaos, the smile behind my happiest memories, and the person who somehow makes every ordinary day feel magical.
 
-Life became brighter after you entered it. Not because everything became perfect, but because every moment became worth sharing.
-
 Your laughter is still my favourite sound. Your happiness is still my favourite goal. And your presence is still my favourite place.
 
-On your birthday, I just want you to know that you are loved more deeply than words can ever fully explain.
+On your birthday, I just want you to know that you are loved more deeply than words can ever fully explain.Be happy always my love may God Krishna bless us with lot of happiness and good health. May your all dreams comes true at right time. I am so grateful to have you in my life, and I look forward to creating many more beautiful memories together. "R💖R"
 `;
 
   useEffect(() => {
@@ -201,10 +199,10 @@ On your birthday, I just want you to know that you are loved more deeply than wo
               "
             >
               <p className="uppercase tracking-[6px] text-yellow-700 text-sm mb-6">
-                A Letter For You
+                A Letter For My Love 💖
               </p>
 
-              <h2 className="text-6xl mb-10 font-serif">Dear Love,</h2>
+              <h2 className="text-6xl mb-10 font-serif">My Dear Love,</h2>
 
               <div
                 className="
@@ -220,7 +218,7 @@ On your birthday, I just want you to know that you are loved more deeply than wo
               </div>
 
               <div className="mt-14">
-                <p className="text-2xl">❤️ Happy Birthday ❤️</p>
+                <p className="text-2xl">❤️ Happy Birthday Baby ❤️</p>
 
                 <p className="mt-8 text-lg">Forever yours,</p>
 

@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
+import Image from "../public/images/image.png";
 
 type IntroSectionProps = {
   onOpenLetter: () => void;
@@ -159,7 +160,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
           </h1>
 
           <p className="text-[10px] sm:text-xs md:text-sm text-gray-400 mt-1 md:mt-2 tracking-[2px] md:tracking-[4px] uppercase">
-            A Little Journey Of Us ✨
+            A Little Journey Of Us R💖R✨
           </p>
         </div>
       </div>
@@ -188,8 +189,8 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
               </h2>
 
               <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-                Some people enter life quietly... and somehow become the loudest
-                happiness.
+                You enter life quietly... and somehow become the loudest part of
+                my world.
               </p>
             </motion.div>
 
@@ -202,7 +203,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
               <div className="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-[40px]" />
 
               <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200"
+                src="images/Image3.jpeg"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
@@ -235,7 +236,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
               <div className="absolute inset-0 bg-rose-400/20 blur-3xl rounded-[40px]" />
 
               <img
-                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200"
+                src="images/Image1.jpeg"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
@@ -255,12 +256,13 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
 
               <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight font-light mb-8">
                 Somehow <br />
-                You Became <br />
+                You Became My <br />
                 Home
               </h2>
 
               <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-                Not every home is a place. Sometimes it’s just a person.
+                Not every home is a place. Sometimes it’s just a person & thats
+                you Shona.
               </p>
             </div>
 
@@ -268,7 +270,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
               <div className="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-[40px]" />
 
               <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
+                src="images/Image.jpeg"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
@@ -288,7 +290,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
             <h2 className="text-3xl sm:text-4xl md:text-7xl leading-tight text-white font-cursive">
               Will You Always <br />
               Be My Favorite <br />
-              Human? 🙄
+              Person to love? 🙄
             </h2>
 
             <p className="text-gray-400 mt-6 text-lg">Choose wisely 😌</p>
@@ -331,7 +333,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
                   className="text-center"
                 >
                   <h3 className="text-5xl font-cursive text-yellow-400">
-                    Good. Correct Answer 😌💛
+                    Yeah. Thats my Baby 😌💛
                   </h3>
 
                   <p className="mt-6 text-gray-300 text-lg">
