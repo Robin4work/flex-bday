@@ -18,7 +18,6 @@ Your laughter is still my favourite sound. Your happiness is still my favourite 
 
 On your birthday, I just want you to know that you are loved more deeply than words can ever fully explain.Be happy always my love may God Krishna bless us with lot of happiness and good health. May your all dreams comes true at right time. I am so grateful to have you in my life, and I look forward to creating many more beautiful memories together. "R💖R"
 `;
-
   useEffect(() => {
     if (!showLetter) return;
 

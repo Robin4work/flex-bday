@@ -204,6 +204,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
 
               <img
                 src="images/Image3.jpeg"
+                // src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
@@ -237,6 +238,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
 
               <img
                 src="images/Image1.jpeg"
+                // src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
@@ -271,6 +273,7 @@ export default function IntroSection({ onOpenLetter }: IntroSectionProps) {
 
               <img
                 src="images/Image.jpeg"
+                // src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
                 alt="Memory"
                 className="relative rounded-[40px] w-full h-[260px] sm:h-[350px] md:h-[550px] object-cover 
                 shadow-2xl border border-white/10
